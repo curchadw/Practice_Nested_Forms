@@ -1,0 +1,34 @@
+ <h1>Create New Flight</h1>
+
+<%= form_for(@flight) do |f|%>
+<div>
+<%= f.label :flight_number %>
+<%= f.text_field :flight_number %>
+</div><br>
+
+<div>
+<%= f.label :destination %>
+<%= f.text_field :destination %>
+</div><br>
+
+<div>
+<label for="flight_pilot_id">Assign a pilot:</label>
+<%= f.collection_select :pilot_id, Pilot.all, :id, :name, {:prompt => "Select a Pilot"} %>
+</div><br>
+
+
+    <h3>Or Create new Pilot:</h3>
+    <%= f.fields_for :pilot, Pilot.new do |pilot_attributes|%>
+        <%= pilot_attributes.label :name, "Pilot name:" %>
+        <%= pilot_attributes.text_field :name %>
+        <br>
+        <%= pilot_attributes.label :rank, "Rank:" %>
+        <%= pilot_attributes.text_field :rank %>
+        <br>
+    <% end %>
+
+
+
+<%= f.submit %>
+
+<% end %>

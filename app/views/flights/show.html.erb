@@ -1,0 +1,11 @@
+<strong>Flight Info</strong>
+<%= @flight.flight_number%>
+<div>
+<h3>Destination</h3>
+<% if flight.pilot.any? %>
+    <%= link_to pilot, pilot%>
+<% else %>
+    <p>No Assigned Pilot</pl>
+<% end %>
+
+</div>
